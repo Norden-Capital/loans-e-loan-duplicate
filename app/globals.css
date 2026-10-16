@@ -1,0 +1,731 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+@plugin "@tailwindcss/typography";
+
+/* LoanHero — trustworthy fintech design system */
+:root {
+  /* Palette: #F9FA58, #FBFBFB, #FFFFFF, #161616, #EBEBEB */
+  --palette-lime: 60 94% 66%;
+  --palette-porcelain: 0 0% 98%;
+  --palette-white: 0 0% 100%;
+  --palette-ink: 0 0% 9%;
+  --palette-border: 0 0% 92%;
+
+  /* Surfaces */
+  --background: var(--palette-porcelain);
+  /* warm cream */
+  --foreground: var(--palette-ink);
+  /* deep navy */
+
+  --card: var(--palette-white);
+  --card-foreground: var(--palette-ink);
+
+  --popover: var(--palette-white);
+  --popover-foreground: var(--palette-ink);
+
+  /* Brand */
+  --primary: var(--palette-ink);
+  /* deep navy */
+  --primary-foreground: var(--palette-porcelain);
+  --primary-glow: var(--palette-ink);
+
+  --secondary: var(--palette-white);
+  --secondary-foreground: var(--palette-ink);
+
+  --muted: var(--palette-white);
+  --muted-foreground: 0 0% 34%;
+
+  --accent: var(--palette-lime);
+  /* emerald — trust/approval */
+  --accent-foreground: var(--palette-ink);
+  --accent-soft: var(--palette-lime);
+
+  --gold: var(--palette-lime);
+  /* warm gold — ratings */
+  --gold-soft: var(--palette-lime);
+
+  --destructive: 0 70% 50%;
+  --destructive-foreground: var(--palette-white);
+
+  --border: 0 0% 92%;
+  --input: 0 0% 92%;
+  --border-dark: 0 0% 12%;
+  --ring: var(--palette-ink);
+
+  --radius: 1rem;
+
+  /* Gradients */
+  --gradient-hero: radial-gradient(ellipse at top right, hsl(var(--accent) / 0.24), transparent 60%),
+    radial-gradient(ellipse at bottom left, hsl(var(--foreground) / 0.06), transparent 55%);
+  --gradient-cta: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary)));
+  --gradient-emerald: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent)));
+
+  /* Shadows */
+  --shadow-soft: 0 1px 2px hsl(var(--foreground) / 0.04), 0 8px 24px -8px hsl(var(--foreground) / 0.08);
+  --shadow-card: 0 2px 4px hsl(var(--foreground) / 0.04), 0 24px 48px -16px hsl(var(--foreground) / 0.12);
+  --shadow-glow: 0 20px 60px -20px hsl(var(--accent) / 0.45);
+  --shadow-cta: 0 10px 30px -10px hsl(var(--foreground) / 0.35);
+
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --sidebar: var(--palette-porcelain);
+  --sidebar-foreground: var(--palette-ink);
+  --sidebar-primary: var(--palette-ink);
+  --sidebar-primary-foreground: var(--palette-porcelain);
+  --sidebar-accent: var(--palette-lime);
+  --sidebar-accent-foreground: var(--palette-ink);
+  --sidebar-border: var(--palette-ink);
+  --sidebar-ring: var(--palette-ink);
+}
+
+.dark {
+  --background: var(--palette-ink);
+  --foreground: var(--palette-porcelain);
+  --card: var(--palette-ink);
+  --card-foreground: var(--palette-porcelain);
+  --popover: var(--palette-ink);
+  --popover-foreground: var(--palette-porcelain);
+  --primary: var(--palette-porcelain);
+  --primary-foreground: var(--palette-ink);
+  --secondary: var(--palette-ink);
+  --secondary-foreground: var(--palette-porcelain);
+  --muted: var(--palette-ink);
+  --muted-foreground: 0 0% 72%;
+  --accent: var(--palette-lime);
+  --accent-foreground: var(--palette-ink);
+  --accent-soft: var(--palette-lime);
+  --gold: var(--palette-lime);
+  --gold-soft: var(--palette-lime);
+  --border: 0 0% 92%;
+  --input: 0 0% 92%;
+  --ring: var(--palette-porcelain);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-soft: hsl(var(--accent-soft));
+  --color-gold: hsl(var(--gold));
+  --color-gold-soft: hsl(var(--gold-soft));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-border-dark: hsl(var(--border-dark));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-card: var(--shadow-card);
+  --shadow-glow: var(--shadow-glow);
+  --shadow-cta: var(--shadow-cta);
+
+  --animate-logo-spin: logo-spin 20s linear infinite;
+
+  @keyframes logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite
+;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }}
+
+@layer base {
+  * {
+    @apply border-border;
+    border-color: hsl(var(--border));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+
+  ::selection {
+    background: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+    letter-spacing: -0.035em;
+  }
+
+  h1,
+  h2 {
+    font-weight: 800;
+    letter-spacing: -0.045em;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .bg-gradient-cta {
+    background: var(--gradient-cta);
+  }
+
+  .bg-gradient-emerald {
+    background: var(--gradient-emerald);
+  }
+
+  /* Hero animation primitives */
+  .hero-float {
+    animation: hero-float 6s var(--transition-smooth) infinite;
+  }
+
+  .hero-float-slow {
+    animation: hero-float-slow 7.5s ease-in-out infinite;
+  }
+
+  .hero-rise {
+    animation: hero-rise 0.7s var(--transition-smooth) both;
+  }
+
+  .hero-pop {
+    animation: hero-pop 0.6s var(--transition-smooth) 0.9s both;
+  }
+
+  .hero-grow {
+    transform-origin: left;
+    animation: hero-grow 1.1s var(--transition-smooth) 0.2s both;
+  }
+
+  .hero-shimmer {
+    animation: hero-shimmer 3s ease-in-out 1s infinite;
+  }
+
+  .hero-spin-slow {
+    animation: hero-spin-slow 40s linear infinite;
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes hero-float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  65% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes hero-grow {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes hero-shimmer {
+  0% {
+    transform: translateX(-160%) skewX(-12deg);
+  }
+
+  100% {
+    transform: translateX(320%) skewX(-12deg);
+  }
+}
+
+@keyframes hero-spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hero-mosaic-flicker {
+  0%,
+  18%,
+  100% {
+    opacity: var(--hero-tile-opacity);
+  }
+
+  19% {
+    opacity: calc(var(--hero-tile-opacity) * 0.36);
+  }
+
+  21%,
+  58% {
+    opacity: calc(var(--hero-tile-opacity) * 0.82);
+  }
+
+  59% {
+    opacity: calc(var(--hero-tile-opacity) * 0.48);
+  }
+
+  62% {
+    opacity: var(--hero-tile-opacity);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-float,
+  .hero-float-slow,
+  .hero-rise,
+  .hero-pop,
+  .hero-grow,
+  .hero-shimmer,
+  .hero-spin-slow {
+    animation: none !important;
+  }
+
+  .hero-grow {
+    transform: scaleX(1);
+  }
+
+  .hero-rise,
+  .hero-pop {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Blog / news article body — maps @tailwindcss/typography onto the E-Loan design
+   tokens so it adapts to light/dark automatically (tokens already flip under .dark). */
+.blog-prose {
+  --tw-prose-body: hsl(var(--foreground));
+  --tw-prose-headings: hsl(var(--foreground));
+  --tw-prose-lead: hsl(var(--muted-foreground));
+  --tw-prose-links: hsl(var(--accent));
+  --tw-prose-bold: hsl(var(--foreground));
+  --tw-prose-counters: hsl(var(--muted-foreground));
+  --tw-prose-bullets: hsl(var(--accent) / 0.55);
+  --tw-prose-hr: hsl(var(--border));
+  --tw-prose-quotes: hsl(var(--foreground));
+  --tw-prose-quote-borders: hsl(var(--accent));
+  --tw-prose-captions: hsl(var(--muted-foreground));
+  --tw-prose-code: hsl(var(--foreground));
+  --tw-prose-pre-code: hsl(var(--foreground));
+  --tw-prose-pre-bg: hsl(var(--muted));
+  --tw-prose-th-borders: hsl(var(--border));
+  --tw-prose-td-borders: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+.blog-prose :is(h1, h2, h3, h4) {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  letter-spacing: -0.035em;
+}
+.blog-prose a {
+  font-weight: 600;
+  color: hsl(var(--accent-foreground));
+  background: hsl(var(--accent));
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.05rem 0.22rem;
+  text-decoration: none;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+.blog-prose a:hover {
+  color: hsl(var(--primary-foreground));
+  background: hsl(var(--primary));
+}
+.blog-prose thead th {
+  font-weight: 700;
+}
+.blog-prose :is(code)::before,
+.blog-prose :is(code)::after {
+  content: "";
+}
+
+/* Rich media (WordPress-like): photos, video, YouTube/Vimeo iframes, embeds.
+   Raw HTML in .mdx is enabled via rehype-raw in the article renderer. */
+.blog-prose img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0;
+  margin: 0;
+}
+.blog-post-image {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+.blog-post-image > img {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+.blog-prose :is(iframe, video) {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  margin: 1.75rem 0;
+}
+.blog-prose figure {
+  margin: 1.75rem 0;
+}
+.blog-prose figure img {
+  margin-inline: auto;
+}
+.blog-prose figcaption {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.85em;
+  color: hsl(var(--muted-foreground));
+}
+/* Offset heading anchors so table-of-contents jumps clear the fixed navbar. */
+.blog-prose :is(h2, h3, h4) {
+  scroll-margin-top: 6rem;
+}
+
+.blog-prose :is(p, li) {
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}
+
+/* Blog/news ordered lists mirror the numbered badges used by comparison content. */
+.article-numbered-list {
+  counter-reset: article-step;
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.article-numbered-list > li {
+  counter-increment: article-step;
+  position: relative;
+  min-height: 1.5rem;
+  margin-top: 0.75rem;
+  padding-left: 2.25rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.95rem;
+  line-height: 1.625;
+}
+
+.article-numbered-list > li::before {
+  content: counter(article-step);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-items: center;
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.article-numbered-list > li > :first-child {
+  margin-top: 0;
+}
+
+.article-numbered-list > li > :last-child {
+  margin-bottom: 0;
+}
+
+/* Blog/news bullets use a dark marker on the accent tile for stronger contrast. */
+.blog-prose .article-bullet-list {
+  list-style: none;
+  margin: 1.5rem 0;
+  padding: 0;
+}
+
+.blog-prose .article-bullet-list > li {
+  position: relative;
+  min-height: 1.5rem;
+  margin-top: 0.75rem;
+  padding-left: 2.25rem;
+  color: hsl(var(--foreground));
+  font-size: 0.95rem;
+  line-height: 1.625;
+}
+
+.blog-prose .article-bullet-list > li::marker {
+  content: "";
+}
+
+.blog-prose .article-bullet-list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: hsl(var(--accent));
+}
+
+.blog-prose .article-bullet-list > li::after {
+  content: "";
+  position: absolute;
+  left: 0.5rem;
+  top: 0.7rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 9999px;
+  background: hsl(var(--primary));
+}
+
+.blog-prose .article-bullet-list > li > :first-child {
+  margin-top: 0;
+}
+
+.blog-prose .article-bullet-list > li > :last-child {
+  margin-bottom: 0;
+}
+
+/* LeadScout embed theme overrides. Keep this scoped to the application form so
+   the third-party purple defaults inherit the E-Loan palette. */
+#lead-scout-form {
+  accent-color: hsl(var(--primary));
+}
+
+#lead-scout-form :is(button, [role="button"], input[type="button"], input[type="submit"]) {
+  border-radius: 0 !important;
+}
+
+#lead-scout-form :is(button, [role="button"], input[type="button"], input[type="submit"]):not(:disabled) {
+  background-color: hsl(var(--primary)) !important;
+  background-image: none !important;
+  border-color: hsl(var(--primary)) !important;
+  color: hsl(var(--primary-foreground)) !important;
+}
+
+#lead-scout-form :is(button, [role="button"], input[type="button"], input[type="submit"]):not(:disabled):hover {
+  background-color: hsl(var(--accent)) !important;
+  border-color: hsl(var(--accent)) !important;
+  color: hsl(var(--accent-foreground)) !important;
+}
+
+#lead-scout-form :is([role="slider"], input[type="range"]::-webkit-slider-thumb) {
+  background-color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: none !important;
+}
+
+#lead-scout-form input[type="range"]::-moz-range-thumb {
+  background-color: hsl(var(--primary)) !important;
+  border-color: hsl(var(--primary)) !important;
+  box-shadow: none !important;
+}
+
+#lead-scout-form input[type="range"]::-webkit-slider-runnable-track {
+  background-color: hsl(var(--primary) / 0.22) !important;
+}
+
+#lead-scout-form input[type="range"]::-moz-range-track {
+  background-color: hsl(var(--primary) / 0.22) !important;
+}
+
+#lead-scout-form :is(
+  [class*="bg-indigo"],
+  [class*="bg-purple"],
+  [class*="bg-violet"],
+  [class*="from-indigo"],
+  [class*="from-purple"],
+  [class*="from-violet"],
+  [class*="to-indigo"],
+  [class*="to-purple"],
+  [class*="to-violet"],
+  [style*="rgb(79, 70, 229)"],
+  [style*="rgb(99, 102, 241)"],
+  [style*="#4f46e5"],
+  [style*="#6366f1"]
+) {
+  background-color: hsl(var(--primary)) !important;
+  background-image: none !important;
+}
+
+#lead-scout-form :is(
+  [class*="text-indigo"],
+  [class*="text-purple"],
+  [class*="text-violet"],
+  [style*="color: rgb(79, 70, 229)"],
+  [style*="color: rgb(99, 102, 241)"],
+  [style*="color: #4f46e5"],
+  [style*="color: #6366f1"]
+) {
+  color: hsl(var(--primary)) !important;
+}
+
+#lead-scout-form :is(
+  [class*="border-indigo"],
+  [class*="border-purple"],
+  [class*="border-violet"],
+  [style*="border-color: rgb(79, 70, 229)"],
+  [style*="border-color: rgb(99, 102, 241)"],
+  [style*="border-color: #4f46e5"],
+  [style*="border-color: #6366f1"]
+) {
+  border-color: hsl(var(--primary)) !important;
+}
+
+.loan-calculator-range::-webkit-slider-runnable-track {
+  height: 0.375rem;
+  border-radius: 0;
+}
+
+.loan-calculator-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  margin-top: -0.3125rem;
+  border: 1px solid hsl(var(--primary));
+  border-radius: 0;
+  background: hsl(var(--primary));
+  box-shadow: none;
+}
+
+.loan-calculator-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid hsl(var(--accent));
+  outline-offset: 2px;
+}
+
+.loan-calculator-range::-moz-range-track {
+  height: 0.375rem;
+  border-radius: 0;
+}
+
+.loan-calculator-range::-moz-range-thumb {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid hsl(var(--primary));
+  border-radius: 0;
+  background: hsl(var(--primary));
+  box-shadow: none;
+}
+
+.loan-calculator-range:focus-visible::-moz-range-thumb {
+  outline: 2px solid hsl(var(--accent));
+  outline-offset: 2px;
+}
+
+/* Reserve the scrollbar gutter so any overlay that locks body scroll can't
+   make the scrollbar vanish and shift the page sideways. The contact form's
+   topic field uses a native <select> precisely so it never locks scroll. */
+html {
+  scrollbar-gutter: stable;
+}
