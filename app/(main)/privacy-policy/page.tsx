@@ -229,10 +229,10 @@ export default function PrivacyPolicyPage() {
               Last updated February 2026.
             </p>
             <a
-              href="mailto:privacy@e-loan.ca"
+              href="mailto:privacy@e-loan.online"
               className="group mt-5 inline-flex items-center gap-2 bg-accent px-2 py-1 text-sm font-bold text-accent-foreground underline-offset-4 hover:underline"
             >
-              privacy@e-loan.ca
+              privacy@e-loan.online
               <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>

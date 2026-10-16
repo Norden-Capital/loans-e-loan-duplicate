@@ -15,9 +15,9 @@ const channels = [
   {
     icon: Mail,
     label: "Email us",
-    value: "support@e-loan.ca",
+    value: "support@e-loan.online",
     detail: "We reply within one business day",
-    href: "mailto:support@e-loan.ca",
+    href: "mailto:support@e-loan.online",
   },
   {
     icon: MessageCircle,

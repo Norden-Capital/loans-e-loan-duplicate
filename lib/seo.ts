@@ -5,7 +5,7 @@ import type { ArticleSection, FaqItem, PostMeta } from "@/lib/content";
 // ── Site details: the only part of this file that differs between sites ──
 
 export const SITE_NAME = "E-Loan";
-export const BASE_URL = "https://e-loan.ca";
+export const BASE_URL = "https://e-loan.online";
 
 /** Publisher logo in article structured data, or null if the site has none. */
 export const LOGO_URL: string | null = `${BASE_URL}/logo.svg`;

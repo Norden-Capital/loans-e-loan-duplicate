@@ -55,7 +55,7 @@ const sections: { n: string; title: string; blocks: LegalBlock[] }[] = [
     title: "Your Agreement to These Terms",
     blocks: [
       {
-        p: "By authorizing automatic withdrawals from your designated bank account for loan repayment, you acknowledge acceptance of these Terms. These Terms have been made accessible to you through multiple channels - including our physical location, our website at e-loan.ca, and through direct communication with our representatives - before you finalize your transaction.",
+        p: "By authorizing automatic withdrawals from your designated bank account for loan repayment, you acknowledge acceptance of these Terms. These Terms have been made accessible to you through multiple channels - including our physical location, our website at e-loan.online, and through direct communication with our representatives - before you finalize your transaction.",
       },
     ],
   },
@@ -217,10 +217,10 @@ export default function TermsOfUsePage() {
               Our team can help clarify questions about this document.
             </p>
             <a
-              href="mailto:legal@e-loan.ca"
+              href="mailto:legal@e-loan.online"
               className="group mt-5 inline-flex items-center gap-2 bg-accent px-2 py-1 text-sm font-bold text-accent-foreground underline-offset-4 hover:underline"
             >
-              legal@e-loan.ca
+              legal@e-loan.online
               <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
           </div>
